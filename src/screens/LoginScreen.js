@@ -6,22 +6,44 @@ import {
   ImageBackground,
   Image,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Animated,
+  Dimensions
 } from "react-native";
+
+import * as Animatable from "react-native-animatable";
+
+const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 class LoginScreen extends Component {
   static navigationOptions = {
     header: null
   };
+
+  componentWillMount() {
+    this.loginHeight = new Animated.Value(150);
+  }
+
+  increaseHeightOfLogin = () => {
+    Animated.timing(this.loginHeight, {
+      toValue: SCREEN_HEIGHT,
+      duration: 500
+    }).start();
+  };
+
   render() {
     return (
-      <View style={styles.container}>
+      <Animatable.View style={styles.container}>
         <ImageBackground
           source={require("../../assets/u-design.jpeg")}
           style={styles.imageDesign}
         >
           <View style={styles.innerContainer}>
-            <View style={styles.textContainerOne}>
+            <Animatable.View
+              animation="zoomIn"
+              iterationCount={1}
+              style={styles.textContainerOne}
+            >
               <Text
                 style={{
                   fontWeight: "bold",
@@ -30,11 +52,11 @@ class LoginScreen extends Component {
               >
                 Bracket Factory
               </Text>
-            </View>
+            </Animatable.View>
           </View>
 
-          <View>
-            <View style={styles.outerBottomCardContainer}>
+          <View animation="slideInUp" iterationCount={1}>
+            <Animated.View style={styles.outerBottomCardContainer}>
               <View style={styles.textContainerTwo}>
                 <Text
                   style={{
@@ -44,13 +66,18 @@ class LoginScreen extends Component {
                   Get moving with Bracket Factory
                 </Text>
               </View>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.increaseHeightOfLogin()}
+              >
                 <View style={styles.touchView}>
                   <Image
                     source={require("../../assets/flag.jpeg")}
                     style={styles.flagImage}
                   />
-                  <View style={styles.textInputContainer}>
+                  <View
+                    pointerEvents="none"
+                    style={styles.textInputContainer}
+                  >
                     <Text
                       style={{
                         fontSize: 20,
@@ -68,7 +95,7 @@ class LoginScreen extends Component {
                   </View>
                 </View>
               </TouchableOpacity>
-            </View>
+            </Animated.View>
             <View style={styles.innerBottomCardContainer}>
               <Text
                 style={{
@@ -81,7 +108,7 @@ class LoginScreen extends Component {
             </View>
           </View>
         </ImageBackground>
-      </View>
+      </Animatable.View>
     );
   }
 }
@@ -115,7 +142,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25
   },
   outerBottomCardContainer: {
-    height: 150,
+    height: this.loginHeight,
     backgroundColor: "white"
   },
   textContainerTwo: {
