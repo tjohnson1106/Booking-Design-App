@@ -17,7 +17,11 @@ class LoginScreen extends Component {
           source={require("../../assets/u-design.jpeg")}
           style={styles.imageBackground}
         >
-          <View>{}</View>
+          <View style={styles.innerContainer}>
+            <View style={styles.textContainer}>
+              <Text>Bracket Factory</Text>
+            </View>
+          </View>
         </ImageBackground>
       </View>
     );
@@ -30,6 +34,18 @@ const styles = StyleSheet.create({
   },
   imageBackround: {
     flex: 1
+  },
+  innerContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  textContainer: {
+    backgroundColor: "white",
+    height: 100,
+    width: 100,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
