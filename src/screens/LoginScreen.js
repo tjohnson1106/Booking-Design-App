@@ -3,7 +3,9 @@ import {
   View,
   Text,
   StyleSheet,
-  ImageBackground
+  ImageBackground,
+  TextInput,
+  TouchableOpacity
 } from "react-native";
 
 class LoginScreen extends Component {
@@ -15,14 +17,45 @@ class LoginScreen extends Component {
       <View style={styles.container}>
         <ImageBackground
           source={require("../../assets/u-design.jpeg")}
-          style={styles.imageBackground}
+          style={styles.imageDesign}
         >
           <View style={styles.innerContainer}>
-            <View style={styles.textContainer}>
-              <Text>Bracket Factory</Text>
+            <View style={styles.textContainerOne}>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 26
+                }}
+              >
+                Bracket Factory
+              </Text>
             </View>
           </View>
-        </ImageBackground>
+
+          <View>
+            <View style={styles.outerBottomCardContainer}>
+              <View style={styles.textContainerTwo}>
+                <Text
+                  style={{
+                    fontSize: 24
+                  }}
+                >
+                  Get moving with Bracket Factory
+                </Text>
+              </View>
+            </View>
+            <View style={styles.innerBottomCardContainer}>
+              <Text
+                style={{
+                  color: "#5a7fdf",
+                  fontWeight: "bold"
+                }}
+              >
+                Connect using a social account
+              </Text>
+            </View>
+          </View>
+        </ImageBackground>x
       </View>
     );
   }
@@ -32,7 +65,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  imageBackround: {
+  imageDesign: {
     flex: 1
   },
   innerContainer: {
@@ -40,12 +73,31 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  textContainer: {
+  textContainerOne: {
     backgroundColor: "white",
     height: 100,
     width: 100,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  innerBottomCardContainer: {
+    height: 70,
+    backgroundColor: "white",
+    alignItems: "flex-start",
     justifyContent: "center",
-    alignItems: "center"
+    borderTopColor: "#e8e8ec",
+    borderTopWidth: 1,
+    paddingHorizontal: 25
+  },
+  outerBottomCardContainer: {
+    height: 150,
+    backgroundColor: "white"
+  },
+  textContainerTwo: {
+    opacity: 1, //animated
+    alignItems: "flex-start",
+    paddingHorizontal: 25,
+    marginTop: 25 //animated
   }
 });
 
