@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
+  Image,
   TextInput,
   TouchableOpacity
 } from "react-native";
@@ -43,6 +44,30 @@ class LoginScreen extends Component {
                   Get moving with Bracket Factory
                 </Text>
               </View>
+              <TouchableOpacity>
+                <View style={styles.touchView}>
+                  <Image
+                    source={require("../../assets/flag.jpeg")}
+                    style={styles.flagImage}
+                  />
+                  <View style={styles.textInputContainer}>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        paddingHorizontal: 10
+                      }}
+                    >
+                      +91
+                    </Text>
+                    <TextInput
+                      style={styles.textInputDesign}
+                      placeholder="Enter your mobile number"
+                      //because I am currently (03/15/2018) working on an Android Phone
+                      underlineColorAndroid="transparent"
+                    />
+                  </View>
+                </View>
+              </TouchableOpacity>
             </View>
             <View style={styles.innerBottomCardContainer}>
               <Text
@@ -51,11 +76,11 @@ class LoginScreen extends Component {
                   fontWeight: "bold"
                 }}
               >
-                Connect using a social account
+                Connect using Facebook
               </Text>
             </View>
           </View>
-        </ImageBackground>x
+        </ImageBackground>
       </View>
     );
   }
@@ -98,6 +123,24 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingHorizontal: 25,
     marginTop: 25 //animated
+  },
+  touchView: {
+    marginTop: 25, //animated
+    paddingHorizontal: 25,
+    flexDirection: "row"
+  },
+  flagImage: {
+    height: 24,
+    width: 24,
+    resizeMode: "contain"
+  },
+  textInputContainer: {
+    flexDirection: "row",
+    flex: 1
+  },
+  textInputDesign: {
+    flex: 1,
+    fontSize: 20
   }
 });
 
